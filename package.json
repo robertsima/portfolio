@@ -8,9 +8,7 @@
     "build": "tsc -b && vite build",
     "lint": "oxlint",
     "validate": "npm run lint && npm run build",
-    "preview": "vite preview",
-    "ai:qwen": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/agent-pair.ps1 -ImplementModel qwen",
-    "ai:qwen-review": "powershell -NoProfile -ExecutionPolicy Bypass -File ./scripts/agent-pair.ps1 -ImplementModel qwen -ReviewModel qwen"
+    "preview": "vite preview"
   },
   "dependencies": {
     "react": "^19.2.7",

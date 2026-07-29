@@ -1,43 +1,66 @@
-# Portfolio subagents
+# Subagents
 
-This repo uses Pi's `@tintinweb/pi-subagents` extension instead of custom orchestration code.
+This repo delegates work to Pi subagents via the `@tintinweb/pi-subagents`
+extension. There is no custom orchestration code — the previous
+`scripts/agent-pair.ps1` and the external `agent-orchestrator` pipelines are no
+longer used.
 
-## Installed once
+## Agents
 
-```bash
-pi install npm:@tintinweb/pi-subagents
+Defined in `.pi/agents/`:
+
+| agent | model | role |
+| --- | --- | --- |
+| `qwen-implementer` | `qwen` (local llama.cpp, `127.0.0.1:8086`) | writes a scoped change, then runs `npm run validate` |
+| `qwen-reviewer` | `qwen` | read-only verification, reports `PASS` / `FAIL` |
+
+Both pin `extensions: pi-llama-switch` and `skills: none`. This is deliberate:
+
+- `pi-llama-switch` is what registers the local `qwen` model. Without it the
+  agent cannot resolve its own model.
+- Pinning excludes every other global extension. In particular `pi-caveman`
+  rewrites output into a terse style, which previously corrupted agent
+  handoffs — a planning agent returned `"Read all 3. No file changed."` and the
+  downstream agents inherited that as their plan.
+
+The extension already withholds `~/.pi/agent/APPEND_SYSTEM.md` and `AGENTS.md`
+from subagents, so no operator-level instructions leak in.
+
+## Running
+
+From an interactive `pi` session in this repo:
+
+```
+Use the qwen-implementer agent to add src/hooks/useReveal.ts ...
 ```
 
-## Project agents
+Both agents declare `run_in_background: true`, so they run detached and stream
+into the fleet view rather than blocking the session.
 
-Agent definitions live here:
+## Watching them work
 
-- `.pi/agents/qwen-implementer.md` — local Qwen coding agent with edit tools
-- `.pi/agents/qwen-reviewer.md` — local Qwen read-only reviewer/validator
+- The **fleet view** lists every running agent with live status and tool activity.
+- `/agents` opens the agent menu — inspect, steer, or kill a running agent.
+- Every run is also written to a session file under
+  `~/.pi/agent/sessions/--D--Development-portfolio--/`, replayable with `pi -r`.
 
-Pi discovers `.pi/agents/*.md` when started in this repo.
+## Verification
 
-## Use
-
-Start Pi in repo:
-
-```bash
-cd D:\Development\portfolio
-pi
-```
-
-Then ask parent agent to spawn subagents, for example:
-
-```text
-Use qwen-implementer to improve project card styling. Then use qwen-reviewer to validate and review the result.
-```
-
-The subagents run through the extension UI, with live status, logs/transcripts, and controls.
-
-## Validation
-
-Reviewer should run:
+A green build proves nothing about scope. Agents have reported success while
+silently writing to a different path than requested, or skipping a requirement
+entirely. Always confirm independently:
 
 ```bash
+git status --short
+git diff
 npm run validate
 ```
+
+`npm run validate` = `oxlint`, then `tsc -b && vite build`.
+
+## Constraints given to agents
+
+- No new npm dependencies.
+- Strict TypeScript.
+- Never start a dev server.
+- Use the exact file paths and signatures requested.
