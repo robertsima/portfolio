@@ -18,7 +18,7 @@ npm run dev
 
 ## Customize
 
-1. Replace `Your Name`, email, GitHub, LinkedIn, and location placeholders in `src/App.tsx`.
+1. Replace `Your Name`, email, GitHub, LinkedIn, and location placeholders in `src/App.tsx`. DONE
 2. Update `projects` and `skills` arrays.
 3. Add screenshots/assets under `src/assets/` or `public/`.
 4. Tune colors and spacing in `src/App.css` and `src/index.css`.

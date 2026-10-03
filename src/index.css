@@ -1,41 +1,73 @@
+/* ───────────────────────────────────────────
+   Design tokens — refined, restrained palette
+   ─────────────────────────────────────────── */
 :root {
   color-scheme: dark;
-  color: #e2e8f0;
+  color: #94a3b8;
   background: #020617;
+
+  /* ── palette ── */
   --page-bg: #020617;
-  --page-bg-glow-1: rgba(56, 189, 248, 0.18);
-  --page-bg-glow-2: rgba(129, 140, 248, 0.18);
-  --page-text: #e2e8f0;
+  --page-text: #94a3b8;
   --page-heading: #f8fafc;
-  --page-muted: #cbd5e1;
-  --page-subtle: #94a3b8;
-  --surface: rgba(15, 23, 42, 0.78);
-  --surface-strong: rgba(15, 23, 42, 0.86);
-  --surface-overlay: rgba(15, 23, 42, 0.38);
-  --surface-soft: rgba(255, 255, 255, 0.05);
-  --surface-border: rgba(255, 255, 255, 0.11);
-  --header-bg: rgba(2, 6, 23, 0.74);
-  --header-border: rgba(255, 255, 255, 0.12);
-  --shadow: rgba(0, 0, 0, 0.35);
-  --pill-bg: rgba(8, 47, 73, 0.42);
-  --pill-border: rgba(34, 211, 238, 0.24);
-  --pill-text: #a5f3fc;
-  --code-bg: rgba(2, 6, 23, 0.72);
-  --code-border: rgba(255, 255, 255, 0.1);
-  --chip-bg: rgba(255, 255, 255, 0.06);
-  --chip-border: rgba(255, 255, 255, 0.12);
-  --button-secondary-bg: rgba(255, 255, 255, 0.05);
-  --button-secondary-border: rgba(255, 255, 255, 0.14);
-  --button-secondary-text: #f8fafc;
-  --nav-link: #cbd5e1;
-  --nav-link-hover: #ffffff;
-  --link: #bae6fd;
-  --toggle-bg: rgba(255, 255, 255, 0.06);
-  --toggle-border: rgba(255, 255, 255, 0.14);
-  --toggle-text: #f8fafc;
-  --selection: rgba(56, 189, 248, 0.35);
-  font-family:
-    Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --page-muted: #64748b;
+  --page-subtle: #475569;
+  --page-highlight: #e2e8f0;
+
+  /* subtle ambient glow */
+  --page-bg-glow: rgba(56, 189, 248, 0.06);
+
+  /* surfaces */
+  --surface: rgba(15, 23, 42, 0.45);
+  --surface-strong: rgba(15, 23, 42, 0.75);
+  --surface-overlay: rgba(15, 23, 42, 0.30);
+  --surface-soft: rgba(255, 255, 255, 0.02);
+  --surface-border: rgba(255, 255, 255, 0.06);
+  --surface-border-hover: rgba(255, 255, 255, 0.12);
+
+  /* header */
+  --header-bg: rgba(2, 6, 23, 0.60);
+  --header-border: rgba(255, 255, 255, 0.06);
+  --shadow: rgba(0, 0, 0, 0.20);
+
+  /* pills */
+  --pill-bg: rgba(56, 189, 248, 0.10);
+  --pill-border: rgba(56, 189, 248, 0.20);
+  --pill-text: #67e8f9;
+
+  /* code blocks */
+  --code-bg: rgba(2, 6, 23, 0.50);
+  --code-border: rgba(255, 255, 255, 0.05);
+
+  /* chips / tags */
+  --chip-bg: rgba(255, 255, 255, 0.03);
+  --chip-border: rgba(255, 255, 255, 0.07);
+
+  /* secondary button */
+  --button-secondary-bg: rgba(255, 255, 255, 0.03);
+  --button-secondary-border: rgba(255, 255, 255, 0.08);
+  --button-secondary-text: #cbd5e1;
+
+  /* links & nav */
+  --nav-link: #64748b;
+  --nav-link-hover: #f1f5f9;
+  --link: #67e8f9;
+
+  /* toggle */
+  --toggle-bg: rgba(255, 255, 255, 0.03);
+  --toggle-border: rgba(255, 255, 255, 0.08);
+  --toggle-text: #94a3b8;
+
+  /* selection */
+  --selection: rgba(56, 189, 248, 0.24);
+
+  /* surface highlight — subtle hover */
+  --surface-highlight: rgba(255, 255, 255, 0.03);
+
+  /* focus ring */
+  --focus-ring: rgba(56, 189, 248, 0.50);
+
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -44,42 +76,58 @@
 
 :root[data-theme='light'] {
   color-scheme: light;
-  color: #0f172a;
-  background: #f8fafc;
-  --page-bg: #f8fafc;
-  --page-bg-glow-1: rgba(56, 189, 248, 0.14);
-  --page-bg-glow-2: rgba(129, 140, 248, 0.14);
-  --page-text: #0f172a;
-  --page-heading: #020617;
-  --page-muted: #334155;
-  --page-subtle: #475569;
-  --surface: rgba(255, 255, 255, 0.78);
-  --surface-strong: rgba(255, 255, 255, 0.92);
-  --surface-overlay: rgba(255, 255, 255, 0.48);
-  --surface-soft: rgba(15, 23, 42, 0.04);
-  --surface-border: rgba(15, 23, 42, 0.12);
-  --header-bg: rgba(255, 255, 255, 0.76);
-  --header-border: rgba(15, 23, 42, 0.1);
-  --shadow: rgba(15, 23, 42, 0.14);
-  --pill-bg: rgba(14, 165, 233, 0.12);
-  --pill-border: rgba(14, 165, 233, 0.2);
-  --pill-text: #0369a1;
-  --code-bg: rgba(248, 250, 252, 0.84);
-  --code-border: rgba(15, 23, 42, 0.08);
-  --chip-bg: rgba(15, 23, 42, 0.04);
-  --chip-border: rgba(15, 23, 42, 0.12);
-  --button-secondary-bg: rgba(15, 23, 42, 0.04);
-  --button-secondary-border: rgba(15, 23, 42, 0.12);
-  --button-secondary-text: #0f172a;
-  --nav-link: #334155;
-  --nav-link-hover: #020617;
-  --link: #0369a1;
-  --toggle-bg: rgba(15, 23, 42, 0.04);
-  --toggle-border: rgba(15, 23, 42, 0.12);
-  --toggle-text: #0f172a;
-  --selection: rgba(14, 165, 233, 0.24);
+  color: #334155;
+  background: #fafbfc;
+
+  --page-bg: #fafbfc;
+  --page-text: #334155;
+  --page-heading: #0f172a;
+  --page-muted: #64748b;
+  --page-subtle: #94a3b8;
+
+  --page-bg-glow: rgba(56, 189, 248, 0.04);
+
+  --surface: rgba(255, 255, 255, 0.80);
+  --surface-strong: rgba(255, 255, 255, 0.95);
+  --surface-overlay: rgba(255, 255, 255, 0.40);
+  --surface-soft: rgba(248, 250, 252, 0.60);
+  --surface-border: rgba(0, 0, 0, 0.06);
+  --surface-border-hover: rgba(0, 0, 0, 0.12);
+
+  --header-bg: rgba(255, 255, 255, 0.70);
+  --header-border: rgba(0, 0, 0, 0.05);
+  --shadow: rgba(0, 0, 0, 0.06);
+
+  --pill-bg: rgba(14, 165, 233, 0.06);
+  --pill-border: rgba(14, 165, 233, 0.14);
+  --pill-text: #0284c7;
+
+  --code-bg: rgba(248, 250, 252, 0.80);
+  --code-border: rgba(0, 0, 0, 0.06);
+
+  --chip-bg: rgba(0, 0, 0, 0.03);
+  --chip-border: rgba(0, 0, 0, 0.07);
+
+  --button-secondary-bg: rgba(0, 0, 0, 0.03);
+  --button-secondary-border: rgba(0, 0, 0, 0.07);
+  --button-secondary-text: #334155;
+
+  --nav-link: #64748b;
+  --nav-link-hover: #0f172a;
+  --link: #0284c7;
+
+  --toggle-bg: rgba(0, 0, 0, 0.03);
+  --toggle-border: rgba(0, 0, 0, 0.06);
+  --toggle-text: #64748b;
+
+  --selection: rgba(14, 165, 233, 0.18);
+  --focus-ring: rgba(14, 165, 233, 0.50);
+
+  --surface-highlight: rgba(0, 0, 0, 0.02);
+  --page-highlight: #e2e8f0;
 }
 
+/* ── reset / base ── */
 * {
   box-sizing: border-box;
 }
@@ -87,6 +135,7 @@
 html {
   scroll-behavior: smooth;
   background: var(--page-bg);
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -95,8 +144,8 @@ body {
   margin: 0;
   color: var(--page-text);
   background:
-    radial-gradient(circle at top left, var(--page-bg-glow-1), transparent 32rem),
-    radial-gradient(circle at top right, var(--page-bg-glow-2), transparent 30rem),
+    radial-gradient(ellipse at 20% 10%, var(--page-bg-glow-1), transparent 50%),
+    radial-gradient(ellipse at 80% 20%, var(--page-bg-glow-2), transparent 50%),
     var(--page-bg);
 }
 
@@ -104,11 +153,23 @@ a {
   color: inherit;
 }
 
-button,
-a {
+button, a {
   -webkit-tap-highlight-color: transparent;
 }
 
 ::selection {
   background: var(--selection);
+}
+
+/* ── focus-visible — accessible, refined ── */
+:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 4px;
+  outline-radius: 2px;
+  outline-width: 2px;
+}
+
+/* suppress default focus ring on mouse/touch */
+:focus:not(:focus-visible) {
+  outline: none;
 }
