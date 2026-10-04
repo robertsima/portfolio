@@ -1,0 +1,6 @@
+.sticky-bottom-element {
+  position: fixed;
+  bottom: 20;
+  left: 0;
+  right: 0; /* Makes it span the full width of the screen */
+}

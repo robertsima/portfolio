@@ -1,0 +1,26 @@
+/* Clip sideways only, so he can be lifted above the track without being cut off. */
+.stick-figure-track {
+  overflow-x: clip;
+  color: var(--page-heading);
+}
+
+.stick-figure {
+  position: relative;
+  z-index: 1;
+  width: max-content;
+}
+
+.stick-figure--draggable {
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+}
+
+.stick-figure--draggable:active {
+  cursor: grabbing;
+}
+
+.stick-figure svg {
+  display: block;
+  overflow: visible;
+}
